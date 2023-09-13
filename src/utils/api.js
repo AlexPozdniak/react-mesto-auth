@@ -101,5 +101,5 @@ export class Api {
   }
 }
 
-const api = new Api(API_CONFIG);
-export default api;
+
+export {Api};

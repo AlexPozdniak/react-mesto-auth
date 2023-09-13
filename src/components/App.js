@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import {useCallback, useEffect, useState} from "react";
 import ImagePopup from "./ImagePopup";
 import {CurrentUserContext} from "../contexts/CurrentUserContext"
-import api from "../utils/api";
+import api, { Api } from "../utils/api";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
@@ -14,6 +14,7 @@ import Login from "./Login";
 import Register from "./Register";
 import InfoTooltip from "./InfoTooltip";
 import auth from "../utils/auth";
+import { API_CONFIG } from "../utils/constants";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -31,6 +32,8 @@ function App() {
 
   const navigate = useNavigate();
   const { pathname } = useLocation();
+
+  const api = new Api(API_CONFIG);
 
     const checkActiveToken = useCallback(() => {
         const jwt = localStorage.getItem('jwt');
